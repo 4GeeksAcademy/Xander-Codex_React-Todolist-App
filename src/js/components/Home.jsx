@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import Input from "./Input";
+import List from "./List";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+  const [tasks, setTasks] = useState([]);
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  const addTask = (taskLabel) => {
+    setTasks([...tasks, { id: Date.now(), label: taskLabel }]);
+  };
+
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter((task) => task.id !== taskId));
+  };
+
+  return (
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Lista de tareas</h1>
+
+      <Input onAddTask={addTask} />
+
+      <List tasks={tasks} onDeleteTask={deleteTask} />
+
+      <p className="text-muted mt-3">{tasks.length} tarea(s) restante(s)</p>
+    </div>
+  );
 };
 
 export default Home;
