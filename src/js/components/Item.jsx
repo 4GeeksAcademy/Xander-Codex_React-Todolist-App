@@ -1,7 +1,7 @@
 import React from "react";
 
-const Item = ({ task, onDelete }) => {
-  const handleDelete = () => {
+const Item = ({ task, onDelete }) => { 
+  const handleDelete = () => { //Llama a onDelete con el id dela tarea
     onDelete(task.id);
   };
 

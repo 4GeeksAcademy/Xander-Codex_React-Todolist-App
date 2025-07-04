@@ -3,14 +3,14 @@ import Input from "./Input";
 import List from "./List";
 
 const Home = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]); //see guardan todas las tareas en un array de objetos.
 
   const addTask = (taskLabel) => {
-    setTasks([...tasks, { id: Date.now(), label: taskLabel }]);
+    setTasks([...tasks, { id: Date.now(), label: taskLabel }]); //date para id unico, si no puede funcionar mal.
   };
 
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter((task) => task.id !== taskId));
+    setTasks(tasks.filter((task) => task.id !== taskId)); //eliminar segun id.
   };
 
   return (
